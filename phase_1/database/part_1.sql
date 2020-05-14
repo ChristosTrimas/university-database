@@ -23,6 +23,7 @@ create table "LearningActivity" (
 	weekday integer not null check(weekday >= 0 and weekday <= 6),
 	serial_number integer NOT NULL DEFAULT nextval('"CourseRun_serial_number_seq"'::regclass),
 	course_code character(7) COLLATE pg_catalog."default" NOT NULL,
+	activity_type type_activity not null,
 	constraint "LearningActivity_pkey" PRIMARY KEY (room_id,start_time,end_time,weekday,course_code, serial_number),
 	constraint "LearningActivity_room_id_fkey" foreign key (room_id)
 	 	REFERENCES public."Room" (room_id) MATCH SIMPLE
